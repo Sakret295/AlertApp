@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+    <appender>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+    </appender>
+
+    <appender name="fileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="logs/aspidServer.log"/>
+        <param name="append" value="true"/>
+        <param name="datePattern" value="'.'yyyy-MM-dd"/>
+        <param name="encoding" value="UTF-8"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-5p %d |%-25c{2}-> %m%n"/>
+        </layout>
+    </appender>
+
+    <Loggers>
+        <!-- Root Logger -->
+        <Root level="debug">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="fileAppender"/>
+        </Root>
+    </Loggers>
+
+
+</Configuration>
